@@ -1,13 +1,15 @@
 REGISTRY=gnomon
 REPO=security-employee-tracker
-SRC="https://github.com/scci/security-employee-tracker.git"
+SRCREPO=scci
+SRC=security-employee-tracker
+GITURL=https://github.com/${SRCREPO}/${SRC}.git
 DATE=`date +%s`
 
 build: clone
 	docker build -t ${REGISTRY}/${REPO}:${DATE} . 2>&1 | tee /tmp/${REPO}.build.out
 
 clone:
-	for f in ${SRC}; do git clone ${f} 2>&1; done | tee /tmp/${REPO}.clone.out
+	if [ ! -d ${SRC} ]; then git clone ${GITURL}; else cd ${SRC}; git pull; fi
 
 push:
 	docker login
