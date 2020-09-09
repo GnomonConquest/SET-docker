@@ -2,6 +2,6 @@
 
 To build, just `make all` .
 
-Do not `make squeaky` unless you are sure you want to erase all your Dockering.
+Do not `make cleanest` unless you are sure you want to erase all your `docker`ing and `git clone`ing.
 
 Do not read the *Dockerfile* too closely if you are an easily offended PHP partisan.

@@ -25,12 +25,14 @@ RUN php -m
 # Copy the app to the /app directory
 WORKDIR /app
 COPY security-employee-tracker/ /app
+# Customizations go here
+COPY composer.json /app/composer.json
 
 ## Uncomment if you need phpenv for some GUI CI/CD crap.
 # COPY phpenv /phpenv
 
 # Sqlite.  Really.  <sigh>
-# This will change in my coming fork.
+# This will change in any coming fork.
 RUN touch storage/database.sqlite && \
     php artisan migrate --force -vvv
 
